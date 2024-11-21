@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .question {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .answers {
+            margin-top: 10px;
+            padding-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Quiz</h1>
+    <% questions.forEach((question, index) => { %>
+        <div class="question">
+            <h2>Pytanie <%= index + 1 %>: <%= question.name.text %></h2>
+            <p><%= question.questiontext.text %></p>
+            <div class="answers">
+                <ol type="a">
+                    <% question.answer.forEach(answer => { %>
+                        <li>
+                            <%= answer.text %> 
+                            <% if (answer.$.fraction === "100") { %>
+                                <strong>(Poprawna)</strong>
+                            <% } %>
+                        </li>
+                    <% }) %>
+                </ol>
+            </div>
+        </div>
+    <% }) %>
+</body>
+</html>
